@@ -15,6 +15,7 @@ function createArcSetControls(index) {
     offsetX: randomBetween(-80, 80),
     offsetY: randomBetween(-80, 80),
     rotation: randomBetween(-1.5, 1.5),
+    orbitSpeed: randomBetween(-0.006, 0.006),
   };
 
   const wrapper = document.createElement("div");
@@ -93,7 +94,7 @@ function draw() {
 
   for (let setIndex = 0; setIndex < arcSets.length; setIndex += 1) {
     const set = arcSets[setIndex];
-    const layerAngle = (TWO_PI / arcSets.length) * setIndex + set.rotation;
+    const layerAngle = (TWO_PI / arcSets.length) * setIndex + set.rotation + frameCount * set.orbitSpeed;
 
     push();
     rotate(layerAngle);
